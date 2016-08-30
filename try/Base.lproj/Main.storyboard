@@ -675,20 +675,6 @@
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="FPE-CL-XLD" customClass="RBView" customModule="try" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="726" height="534"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ho-Ij-uM4">
-                                        <rect key="frame" x="18" y="497" width="264" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Ewk-5b-z5q">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="5Ho-Ij-uM4" firstAttribute="leading" secondItem="FPE-CL-XLD" secondAttribute="leading" constant="20" id="4SM-oX-Bv7"/>
-                                    <constraint firstItem="5Ho-Ij-uM4" firstAttribute="top" secondItem="FPE-CL-XLD" secondAttribute="top" constant="20" id="fYw-GJ-1fE"/>
-                                </constraints>
                             </customView>
                         </subviews>
                         <constraints>
@@ -700,9 +686,6 @@
                             <constraint firstItem="FPE-CL-XLD" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Nak-PK-Kwc"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="myLocation" destination="5Ho-Ij-uM4" id="zLM-SN-CwC"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="KIL-IP-ciS"/>

@@ -22,6 +22,14 @@ func lenghtAB(A: NSPoint,B: NSPoint) -> Float{
 }
 
 class RBView: NSView {
+    
+    // setting control points
+    var myStartPoint    = NSPoint(x: 50+200,  y: 50+200+200)
+    var myControlPoint1 = NSPoint(x: 50+30+200,  y: 250)
+    var myControlPoint2 = NSPoint(x: 400-30+200, y: 250+200)
+    var myEndPoint      = NSPoint(x: 400+200, y: 50+200)
+    
+    
     //    var mouseLocation: NSPoint {
     //        return NSEvent.mouseLocation()
     //    }
@@ -56,6 +64,31 @@ class RBView: NSView {
     override func mouseDragged(theEvent: NSEvent) {
         //        Swift.print( "2) MouseDragged Location X,Y = \(theEvent.locationInWindow)" )
         
+        Swift.print("mouseDragged in drawRect\(mouseLoc)")
+        let controlPoints: [NSPoint] = [myStartPoint, myControlPoint1, myControlPoint2, myEndPoint]
+        for point in controlPoints {
+            if lenghtAB(mouseLoc, B: point) < 10.0{
+                switch point {
+                case myStartPoint:
+                    
+                    myStartPoint.x = mouseLoc.x
+                    myStartPoint.y = mouseLoc.y
+                case myControlPoint1:
+                    myControlPoint1.x = mouseLoc.x
+                    myControlPoint1.y = mouseLoc.y
+
+                case myControlPoint2:
+                    myControlPoint2.x = mouseLoc.x
+                    myControlPoint2.y = mouseLoc.y
+                case myEndPoint:
+                    myEndPoint.x = mouseLoc.x
+                    myEndPoint.y = mouseLoc.y
+                default:
+                    ()
+                
+                }
+            }
+        }
         mouseLoc = theEvent.locationInWindow
         mouseDraggedByUser = true
         self.needsDisplay = true /// niezbędne do przekazywania mouseLoc do ogólnej wartości
@@ -88,11 +121,11 @@ class RBView: NSView {
         
         ///bezier
         
-        // setting control points
-        var myStartPoint = NSPoint(x: 50 , y: 50)
-        var myControlPoint1 = NSPoint(x: 250, y: 250)
-        var myControlPoint2 = NSPoint(x: 350, y: 350)
-        var myEndPoint = NSPoint(x: 50 , y: 100)
+//        // setting control points // przeniosłem do atrybutów, na początek klasy
+//        var myStartPoint    = NSPoint(x: 50+200,  y: 50+200+200)
+//        var myControlPoint1 = NSPoint(x: 50+30+200,  y: 250)
+//        var myControlPoint2 = NSPoint(x: 400-30+200, y: 250+200)
+//        var myEndPoint      = NSPoint(x: 400+200, y: 50+200)
         let controlPoints = [myStartPoint, myControlPoint1, myControlPoint2, myEndPoint]
         
         NSColor.blueColor().set()
@@ -100,6 +133,14 @@ class RBView: NSView {
         path.moveToPoint(myStartPoint)
         path.curveToPoint(myEndPoint, controlPoint1: myControlPoint1, controlPoint2: myControlPoint2)
         path.stroke()
+        NSColor.yellowColor().set()
+        let bars = NSBezierPath()
+        bars.moveToPoint(controlPoints[0])
+        bars.lineToPoint(controlPoints[1])
+        bars.stroke()
+        bars.moveToPoint(controlPoints[3])
+        bars.lineToPoint(controlPoints[2])
+        bars.stroke()
         
         //draws controlPoints as circles
         for point in controlPoints {
@@ -122,15 +163,14 @@ class RBView: NSView {
         /// ciągnięcie
         
         if mouseDraggedByUser {
+            Swift.print("mouseDragged in drawRect\(mouseLoc)")
             for point in controlPoints {
                 if lenghtAB(mouseLoc, B: point) < 10.0{
                     Swift.print("!!!!!!!!!!! \(point)")
                     let xCor = point.x - 5
                     let yCor = point.y - 5
                     
-                    NSColor.redColor().set()
-                    
-                    
+                    NSColor.yellowColor().set()
                     let rect = NSRect(origin: NSPoint(x: xCor, y: yCor), size: CGSize(width: 10, height: 10))
                     let circle = NSBezierPath(roundedRect: rect, xRadius: 5, yRadius: 5)
                     circle.fill()
