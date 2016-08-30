@@ -11,7 +11,7 @@
 		76B099721D74A7C800E39257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B099711D74A7C800E39257 /* ViewController.swift */; };
 		76B099741D74A7C800E39257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B099731D74A7C800E39257 /* Assets.xcassets */; };
 		76B099771D74A7C800E39257 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B099751D74A7C800E39257 /* Main.storyboard */; };
-		76B0997F1D74A80300E39257 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B0997E1D74A80300E39257 /* Window.swift */; };
+		76B099831D74E10D00E39257 /* RBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B099821D74E10D00E39257 /* RBView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		76B099731D74A7C800E39257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76B099761D74A7C800E39257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		76B099781D74A7C800E39257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76B0997E1D74A80300E39257 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		76B099821D74E10D00E39257 /* RBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,11 +54,11 @@
 		76B0996E1D74A7C800E39257 /* try */ = {
 			isa = PBXGroup;
 			children = (
+				76B099821D74E10D00E39257 /* RBView.swift */,
 				76B0996F1D74A7C800E39257 /* AppDelegate.swift */,
 				76B099711D74A7C800E39257 /* ViewController.swift */,
 				76B099731D74A7C800E39257 /* Assets.xcassets */,
 				76B099751D74A7C800E39257 /* Main.storyboard */,
-				76B0997E1D74A80300E39257 /* Window.swift */,
 				76B099781D74A7C800E39257 /* Info.plist */,
 			);
 			path = try;
@@ -135,8 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B099721D74A7C800E39257 /* ViewController.swift in Sources */,
+				76B099831D74E10D00E39257 /* RBView.swift in Sources */,
 				76B099701D74A7C800E39257 /* AppDelegate.swift in Sources */,
-				76B0997F1D74A80300E39257 /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +279,7 @@
 				76B0997D1D74A7C800E39257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

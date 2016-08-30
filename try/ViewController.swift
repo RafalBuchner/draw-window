@@ -10,12 +10,11 @@ import Cocoa
 
 class ViewController: NSViewController {
     
-    @IBOutlet weak var window: Window!
-    
+    @IBOutlet weak var myLocation: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        window.window?.acceptsMouseMovedEvents = true
+        myLocation.stringValue = "\(RBView().mouseLoc) :Wyświetlane z poziomu ViewController" //Nie wiem jak zacząć odświerzać aktualizację
     }
 
     override var representedObject: AnyObject? {
