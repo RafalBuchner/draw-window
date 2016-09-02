@@ -29,7 +29,8 @@ class RBView: NSView {
     //        return NSEvent.mouseLocation()
     //    }
     var mouseLoc: NSPoint = NSPoint()
-    var mouseLocDragged: NSPoint = NSPoint() //co zrobić aby mouseLocDragged przejmował wartość od parametru mouseDown? // ODP: self.needsDisplay w metodzie
+//    var mouseLocDragged: NSPoint = NSPoint() //co zrobić aby mouseLocDragged przejmował wartość od parametru mouseDown? // ODP: self.needsDisplay w metodzie
+    var mouseLocDown: NSPoint = NSPoint()
     var mouseClickedByUser: Bool = false // sprawdza, czy został kliknięty LMB
     var mouseDraggedByUser: Bool = false // sprawdza, czy LMB został przeciągnięty
 
@@ -55,24 +56,14 @@ class RBView: NSView {
     
     override func mouseDragged(theEvent: NSEvent) {
 
-        mouseLoc = theEvent.locationInWindow
-        
-        for point in controlPoints {
-            
-            if lenghtAB(mouseLoc, B: point.point()) < 10.0{
-                
-                point.selected = true
-
-            }
-        }
-        mouseLoc = theEvent.locationInWindow
-        
+        mouseLoc = theEvent.locationInWindow // mouseLoc przyjmuje wartość z mouseDragg, aby program kontynuował lokalizację myszki
         mouseDraggedByUser = true
         self.needsDisplay = true /// niezbędne do przekazywania mouseLoc do ogólnej wartości
         
     }
     
     override func mouseDown(theEvent : NSEvent) {
+        
         Swift.print( "3) MouseDown Location X,Y = \(theEvent.locationInWindow)" )
         for point in controlPoints {
                 if lenghtAB(mouseLoc, B: point.point()) < 10 {

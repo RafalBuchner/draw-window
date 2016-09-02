@@ -19,8 +19,8 @@ class RBPoint: NSObject {
         self.x = x
         self.y = y
         self.indexNum = indexNum
-        
     }
+
     
     func point() -> NSPoint {
 //        let cgX = CGFloat(x)
