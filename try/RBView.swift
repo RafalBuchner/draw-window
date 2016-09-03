@@ -121,9 +121,9 @@ class RBView: NSView {
         
         
         ///bezier
-        let barsColor = NSColor.init(red: 0.99, green: 0.5, blue: 0.2, alpha: 1)
         
-        NSColor.blueColor().set()
+        let bezierColor = NSColor.init(red: 0.1, green: 0.1, blue: 0.1, alpha: 1)
+        bezierColor.set()
         let path = NSBezierPath()
         path.moveToPoint( controlPoints[0].point() )
         path.curveToPoint(
@@ -133,6 +133,7 @@ class RBView: NSView {
         path.stroke()
         
         // START: bars and control points
+        let barsColor = NSColor.init(red: 0.99, green: 0.5, blue: 0.2, alpha: 1)
         barsColor.set()
         let bars = NSBezierPath()
         bars.lineWidth = 1
@@ -143,10 +144,10 @@ class RBView: NSView {
         bars.lineToPoint(controlPoints[2].point())
         bars.stroke()
         
-        
+        let sizeOfPoints: CGFloat = 6
         for point in controlPoints {
-            let xCor = point.x - 5
-            let yCor = point.y - 5
+            let xCor = point.x - sizeOfPoints/2
+            let yCor = point.y - sizeOfPoints/2
             
             if point == controlPoints[3] || point == controlPoints[0]{
                 barsColor.set()
@@ -154,8 +155,8 @@ class RBView: NSView {
                 barsColor.set()
             }
             
-            let rect = NSRect(origin: NSPoint(x: xCor, y: yCor), size: CGSize(width: 10, height: 10))
-            let circle = NSBezierPath(roundedRect: rect, xRadius: 5, yRadius: 5)
+            let rect = NSRect(origin: NSPoint(x: xCor, y: yCor), size: CGSize(width: sizeOfPoints, height: sizeOfPoints))
+            let circle = NSBezierPath(roundedRect: rect, xRadius: sizeOfPoints/2, yRadius: sizeOfPoints/2)
             circle.lineWidth = 2
             circle.stroke()
             backgroundColor.set()
@@ -167,14 +168,15 @@ class RBView: NSView {
             if point.selected{
                 
                 /// zakolorowanie ciągniątego punktu na żółto
-                let xCor = point.x - 5
-                let yCor = point.y - 5
+                let xCor = point.x - sizeOfPoints/2
+                let yCor = point.y - sizeOfPoints/2
                 
                 barsColor.set()
-                let rect = NSRect(origin: NSPoint(x: xCor, y: yCor), size: CGSize(width: 10, height: 10))
-                let circle = NSBezierPath(roundedRect: rect, xRadius: 5, yRadius: 5)
-                circle.lineWidth = 2
+                let rect = NSRect(origin: NSPoint(x: xCor, y: yCor), size: CGSize(width: sizeOfPoints, height: sizeOfPoints))
+                let circle = NSBezierPath(roundedRect: rect, xRadius: sizeOfPoints/2, yRadius: sizeOfPoints/2)
+                circle.lineWidth = 1
                 circle.fill()
+                circle.stroke()
                 
             }
         }
